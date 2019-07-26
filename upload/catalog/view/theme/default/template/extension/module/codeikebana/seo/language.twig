@@ -1,0 +1,77 @@
+{# empty Twig template #}
+{#{% if languages|length > 1 %}
+<div class="pull-left">
+  <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
+    <div class="btn-group">
+      <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+      {% for language in languages %}
+      {% if language.code == code %} 
+      <img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}">
+      {% endif %}
+      {% endfor %}
+      <span class="hidden-xs hidden-sm hidden-md">{{ text_language }}</span>&nbsp;<i class="fa fa-caret-down"></i></button>
+      <ul class="dropdown-menu">
+        {% for language in languages %}
+        <li>
+          <button class="btn btn-link btn-block language-select" type="button" name="{{ language.code }}"><img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <input type="hidden" name="code" value="" />
+    <input type="hidden" name="redirect" value="{{ redirect }}" />
+  </form>
+</div>
+{% endif %}
+#}
+
+{#{% if languages|length > 1 %}
+    <div class="">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
+            <div class="language-btn-group btn-group">
+                {% for language in languages %}
+                    <button class="btn btn-link language-select {% if language.code == code %}active-language{% endif %}" type="button" name="{{ language.code }}" alt="{{ language.name }}" title="{{ language.name }}">{{ language.code|upper|slice(0, 2) }}</button>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="code" value="" />
+            <input type="hidden" name="redirect" value="{{ redirect }}" />
+        </form>
+    </div>
+{% endif %}#}
+{% if languages|length > 1 %}
+{#<div class="pull-left">#}
+  <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
+    <div class="btn-group">
+      <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+      {% for language in languages %}
+      {% if language.code == code %}
+          <span class="" title="{{ text_language }}">{{ language.name }} </span>&nbsp;
+{#          <img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}">#}
+      {% endif %}
+      {% endfor %}
+      <i class="fa fa-caret-down"></i></button>
+      <ul class="dropdown-menu">
+        {% for language in languages %}
+        <li>
+          <button class="language-select btn btn-link" type="button" name="{{ language.code }}">
+{#              <img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" />#}
+              {{ language.name }}
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <input type="hidden" name="code" value="{{ code }}" />
+    
+    
+{#    <input type="hidden" name="redirect" value="{{ redirect }}" />#}
+
+
+    {% for key, val in url_data %}
+        <input type="hidden" name="url_data[{{ key }}]" value='{{ val }}' />
+    {% endfor %}
+    
+    
+  </form>
+{#</div>#}
+{% endif %}
